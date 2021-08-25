@@ -6,9 +6,9 @@ export const diceRollsSlice = createSlice({
     rolls: [],
   },
   reducers: {
-    // addRoll({roll: 4}) --> [1, 2, 4, 5] -> [1, 2, 4, 5, 4]
+    // addRoll(4) --> [1, 2, 4, 5] -> [1, 2, 4, 5, 4]
     addRoll: (state, action) => {
-      state.rolls.push(action.roll);
+      state.rolls.push(action.payload);
     },
 
     // addRandomRoll() --> [1, 2, 4, 5] -> [1, 2, 4, 5, 3]
