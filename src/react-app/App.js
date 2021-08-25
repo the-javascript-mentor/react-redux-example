@@ -1,23 +1,31 @@
-import "./App.css";
+import { useSelector, useDispatch } from "react-redux";
 
-function App() {
+import "./App.css";
+import { decrement, increment } from "../redux-state/counter";
+
+const App = () => {
+  const counter = useSelector((state) => state.counter.value);
+  const dispatch = useDispatch();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div className="App">The counter currently is {counter}.</div>
+      <button
+        onClick={() => {
+          dispatch(increment());
+        }}
+      >
+        +
+      </button>
+      <button
+        onClick={() => {
+          dispatch(decrement());
+        }}
+      >
+        -
+      </button>
     </div>
   );
-}
+};
 
 export default App;
