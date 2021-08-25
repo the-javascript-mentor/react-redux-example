@@ -4,17 +4,20 @@ export const diceRollsSlice = createSlice({
   name: "diceRolls",
   initialState: {
     rolls: [],
+    rollCounter: 0,
   },
   reducers: {
     // addRoll(4) --> [1, 2, 4, 5] -> [1, 2, 4, 5, 4]
     addRoll: (state, action) => {
       state.rolls.push(action.payload);
+      state.rollCounter++;
     },
 
     // addRandomRoll() --> [1, 2, 4, 5] -> [1, 2, 4, 5, 3]
     addRandomRoll: (state) => {
       const randomRoll = Math.floor(Math.random() * 6) + 1;
       state.rolls.push(randomRoll);
+      state.rollCounter++;
     },
 
     // resetRolls() --> [1, 4, 5, 3, 2] -> []
